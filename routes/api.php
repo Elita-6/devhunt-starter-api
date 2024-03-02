@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get("/exemple", [ApartController::class, "exemple"]);
-Route::post("/user/create", [UtilisateurController::class, "store"]);
+Route::apiResource("utilisateur", UtilisateurController::class);
