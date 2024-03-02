@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApartController;
+use App\Http\Controllers\UtilisateurController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get("/exemple", [ApartController::class, "exemple"]);
+Route::post("/user/create", [UtilisateurController::class, "store"]);

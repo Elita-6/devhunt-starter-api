@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Utilisateur;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Str;
@@ -51,7 +53,8 @@ class UtilisateurController extends Controller
                    'firstName' => $request->input('firstName'),
                    'lastName' => $request->input('lastName'),
                    'email' => $request->input('email'),
-                   'profileUrl' => $path
+                   'profileUrl' => $path,
+                   'typeProvider' => $request->input('typeProvider')
                     ]);
 
                    //  dd($loginuser->mail);
@@ -65,7 +68,7 @@ class UtilisateurController extends Controller
                        // dd($user->userId);
 
                        $token = JWTAuth::fromUser($loginuser, ['userid'=>$loginuser->id]);
-                       $loginuser->forceFill(['api_token' => $token])->save();
+//                        $loginuser->forceFill(['api_token' => $token])->save();
                        $cookie = cookie('jwt', $token, 60 * 24);
 
                        // dd(Auth::user());
@@ -96,7 +99,7 @@ class UtilisateurController extends Controller
                                  'firstName' => $request->input('firstName'),
                                  'lastName' => $request->input('lastName'),
                                  'email' => $request->input('email'),
-
+                                'typeProvider' => $request->input('typeProvider')
                           ]);
 
                //  dd($loginuser->mail);
@@ -110,7 +113,7 @@ class UtilisateurController extends Controller
                    // dd($user->userId);
 
                     $token = JWTAuth::fromUser($loginuser, ['userid'=>$loginuser->id]);
-                   $loginuser->forceFill(['api_token' => $token])->save();
+//                    $loginuser->forceFill(['api_token' => $token])->save();
                    $cookie = cookie('jwt', $token, 60 * 24);
 
                    // dd(Auth::user());
