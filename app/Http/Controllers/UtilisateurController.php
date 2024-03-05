@@ -16,7 +16,7 @@ class UtilisateurController extends Controller
      */
     public function index()
     {
-        return response()->json(Utilisateur::where("active", true)->first());
+        return response()->json(Utilisateur::where("active", true)->get());
     }
 
     /**
